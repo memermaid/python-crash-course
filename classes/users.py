@@ -28,3 +28,19 @@ user1.increment_login_attempts()
 print(f'User {user1.first_name} has {user1.login_attempts} login attemps.')
 user1.reset_login_attempts()
 print(f'User {user1.first_name} has {user1.login_attempts} login attemps.')
+
+
+class Admin(User):
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        self.privileges = []
+
+    def show_privileges(self):
+        print(f'Admin {self.first_name} {self.last_name} has the following privileges: ')
+        for i in self.privileges:
+            print("-", i)
+
+
+admin1 = Admin("Natalya", "Ivanova")
+admin1.privileges = ['can add post', 'can delete post']
+admin1.show_privileges()
